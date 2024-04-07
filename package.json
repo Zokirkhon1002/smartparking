@@ -1,0 +1,19 @@
+{
+  "name": "smart-parking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file .env index.js",
+    "dev": "node --env-file .env --watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zokirkhon",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "joi": "^17.12.2",
+    "mongoose": "^8.2.4"
+  }
+}
