@@ -1,17 +1,21 @@
+const HOURLY_RATE = 2000; // birinchi 24 soat uchun, so'm/soat
+const EXTENDED_HOURLY_RATE = 1800; // 24 soatdan keyingi har bir soat uchun, so'm/soat
+const EXTENDED_RATE_THRESHOLD_HOURS = 24;
+
 function getPrice(hours, discount = 0) {
   let result = 0;
-  const oneHourWon = 2000;
 
-  if (hours > 0 && hours < 24) {
-    result = hours * oneHourWon;
-  } else {
-    result = hours * (oneHourWon - 200);
+  if (hours > 0) {
+    result =
+      hours < EXTENDED_RATE_THRESHOLD_HOURS
+        ? hours * HOURLY_RATE
+        : hours * EXTENDED_HOURLY_RATE;
   }
-  if(discount > 0){
-    let onePrecent = result / 100;
-    let minusPrice = onePrecent * discount;
-    result = result - minusPrice;
+
+  if (discount > 0) {
+    result = result - (result * discount) / 100;
   }
+
   return result;
 }
 

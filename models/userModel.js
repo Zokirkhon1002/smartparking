@@ -19,13 +19,17 @@ const userSchema = new Schema(
       required: false,
     },
     pointId: {
-      type: String,
+      type: Schema.Types.ObjectId,
       ref: "points",
       required: false,
+      default: null,
     },
   },
   { timestamps: true }
 );
+
+// carNumber bo'yicha va ochiq sessiyani (carNumber + exitTime) qidirish tez bo'lishi uchun
+userSchema.index({ carNumber: 1, exitTime: 1 });
 
 const CarNumbers = model("carnumbers", userSchema);
 
